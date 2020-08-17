@@ -1,9 +1,0 @@
-on:
-name:
-jobs:
-  shellcheck:
-    runs-on:
-    steps:
-    - uses:
-    - name:
-      uses:
