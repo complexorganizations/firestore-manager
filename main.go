@@ -70,6 +70,25 @@ func main() {
 					c.String("document"),
 				)
 			},
+		},
+		&cli.Command{
+			Name:    "read",
+			Aliases: []string{"r"},
+			Flags: []cli.Flag{
+				CredentialsFile(),
+				Collection(),
+				Document(),
+				JsonFile(),
+			},
+			Usage: "read a document from firebase",
+			Action: func(c *cli.Context) error {
+				return Read(
+					c.String("credentials_file"),
+					c.String("collection"),
+					c.String("document"),
+					c.String("file"),
+				)
+			},
 		})
 
 	err := app.Run(os.Args)
@@ -128,6 +147,27 @@ func Set(credentialsFile, collection, documentName, file string) error {
 
 	_, err = cal.Set(ctx, content)
 	return err
+}
+
+func Read(credentialsFile, collection, documentName, fileName string) error {
+	ctx := context.Background()
+	cli, err := New(ctx, credentialsFile)
+	if err != nil {
+		return err
+	}
+
+	col := cli.Collection(collection)
+	doc := col.Doc(documentName)
+
+	snap, err := doc.Get(context.Background())
+	if err != nil {
+		return err
+	}
+	res, err := json.Marshal(snap.Data())
+	if err != nil {
+		return err
+	}
+	return ioutil.WriteFile(fileName, res, 0644)
 }
 
 func ReadJsonFile(file string) (map[string]interface{}, error) {
