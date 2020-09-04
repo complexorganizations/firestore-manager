@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -10,6 +11,7 @@ import (
 	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go"
 	"github.com/urfave/cli/v2"
+	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
 )
 
@@ -197,4 +199,26 @@ func JsonFile() cli.Flag {
 		Usage:    "--" + "file" + " name",
 		Required: true,
 	}
+}
+
+func Export(collection, documentName, credentialsFile string, ctx context.Context) error {
+	cli, err := New(ctx, credentialsFile)
+	if err != nil {
+		return err
+	}
+
+	iter := cli.Collection(collection).Doc(documentName).Collections(ctx)
+
+	for {
+		collRef, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return err
+		}
+		fmt.Printf("Found collection with id: %s\n", collRef.ID)
+	}
+
+	return nil
 }
