@@ -201,7 +201,8 @@ func JsonFile() cli.Flag {
 	}
 }
 
-func Export(collection, documentName, credentialsFile string, ctx context.Context) error {
+func Export(collection, documentName, credentialsFile string) error {
+	ctx := context.Background()
 	cli, err := New(ctx, credentialsFile)
 	if err != nil {
 		return err
