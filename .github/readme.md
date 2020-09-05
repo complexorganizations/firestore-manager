@@ -1,10 +1,9 @@
 # Firestore (Export|Import|Delete)
 
 #### Features
-- Being able to import json documents to firestore
+- Being able to import local json documents to firestore
+- Being able to export json documents from firestore to local
 - Being able to delete a certain document from firestore
-- Being able to import any size document to firestore
-
 
 #### Usage
 ```
