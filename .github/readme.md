@@ -9,10 +9,10 @@
 #### Usage
 ```
 NAME:
-   firestore-export-import - A new cli application
+   ffirestore-manager - A new cli application
 
 USAGE:
-   firestore-export-import [global options] command [command options] [arguments...]
+   firestore-manager [global options] command [command options] [arguments...]
 
 COMMANDS:
    create, c  create a document on firebase
@@ -24,5 +24,5 @@ COMMANDS:
 GLOBAL OPTIONS:
    --help, -h  show help (default: false)
 ---
-./firestore-export-import delete -auth auth_file.json --collection collection --document document
+./firestore-manager delete -auth auth_file.json --collection collection --document document
 ```
