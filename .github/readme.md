@@ -9,7 +9,7 @@
 #### Usage
 ```
 NAME:
-   ffirestore-manager - A new cli application
+   firestore-manager - A new cli application
 
 USAGE:
    firestore-manager [global options] command [command options] [arguments...]
@@ -23,6 +23,10 @@ COMMANDS:
 
 GLOBAL OPTIONS:
    --help, -h  show help (default: false)
+```
+
 ---
-./firestore-manager delete -auth auth_file.json --collection collection --document document
+####
+```
+./firestore-manager set -auth auth_file.json --collection collection_name --document document_name --file local_file_name.json
 ```
