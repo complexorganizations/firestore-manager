@@ -1,6 +1,6 @@
-module github.com/complexorganizations/firestore-export-import
+module github.com/complexorganizations/firestore-manager
 
-go 1.14
+go 1.15.1
 
 require (
 	cloud.google.com/go/firestore v1.3.0
