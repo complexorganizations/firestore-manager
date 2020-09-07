@@ -23,9 +23,3 @@ COMMANDS:
 GLOBAL OPTIONS:
    --help, -h  show help (default: false)
 ```
-
----
-####
-```
-./firestore-manager set -auth auth_file.json --collection collection_name --document document_name --file local_file_name.json
-```
