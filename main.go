@@ -19,14 +19,14 @@ func main() {
 			Name:    "create",
 			Aliases: []string{"c"},
 			Flags: []cli.Flag{
-				CredentialsFile(),
-				Collection(),
-				Document(),
-				JsonFile(),
+				credentialsFile(),
+				collection(),
+				document(),
+				jsonFile(),
 			},
 			Usage: "create a document on firebase",
 			Action: func(c *cli.Context) error {
-				return Create(
+				return create(
 					c.String("credentials_file"),
 					c.String("collection"),
 					c.String("document"),
@@ -38,14 +38,14 @@ func main() {
 			Name:    "set",
 			Aliases: []string{"s"},
 			Flags: []cli.Flag{
-				CredentialsFile(),
-				Collection(),
-				Document(),
-				JsonFile(),
+				credentialsFile(),
+				collection(),
+				document(),
+				jsonFile(),
 			},
 			Usage: "updates a document on firebase",
 			Action: func(c *cli.Context) error {
-				return Set(
+				return set(
 					c.String("credentials_file"),
 					c.String("collection"),
 					c.String("document"),
@@ -57,13 +57,13 @@ func main() {
 			Name:    "delete",
 			Aliases: []string{"d"},
 			Flags: []cli.Flag{
-				CredentialsFile(),
-				Collection(),
-				Document(),
+				credentialsFile(),
+				collection(),
+				document(),
 			},
 			Usage: "deletes a document on firebase",
 			Action: func(c *cli.Context) error {
-				return Delete(
+				return delete(
 					c.String("credentials_file"),
 					c.String("collection"),
 					c.String("document"),
@@ -74,14 +74,14 @@ func main() {
 			Name:    "read",
 			Aliases: []string{"r"},
 			Flags: []cli.Flag{
-				CredentialsFile(),
-				Collection(),
-				Document(),
-				JsonFile(),
+				credentialsFile(),
+				collection(),
+				document(),
+				jsonFile(),
 			},
 			Usage: "read a document from firebase",
 			Action: func(c *cli.Context) error {
-				return Read(
+				return read(
 					c.String("credentials_file"),
 					c.String("collection"),
 					c.String("document"),
@@ -95,13 +95,13 @@ func main() {
 	}
 }
 
-func Create(credentialsFile, collection, documentName, fileName string) error {
+func create(credentialsFile, collection, documentName, fileName string) error {
 	ctx := context.Background()
-	cli, err := New(ctx, credentialsFile)
+	cli, err := new(ctx, credentialsFile)
 	if err != nil {
 		return err
 	}
-	content, err := ReadJsonFile(fileName)
+	content, err := readJSONFile(fileName)
 	if err != nil {
 		return err
 	}
@@ -111,9 +111,9 @@ func Create(credentialsFile, collection, documentName, fileName string) error {
 	return err
 }
 
-func Delete(credentialsFile, collection, documentName string) error {
+func delete(credentialsFile, collection, documentName string) error {
 	ctx := context.Background()
-	cli, err := New(ctx, credentialsFile)
+	cli, err := new(ctx, credentialsFile)
 	if err != nil {
 		return err
 	}
@@ -123,13 +123,13 @@ func Delete(credentialsFile, collection, documentName string) error {
 	return err
 }
 
-func Set(credentialsFile, collection, documentName, file string) error {
+func set(credentialsFile, collection, documentName, file string) error {
 	ctx := context.Background()
-	cli, err := New(ctx, credentialsFile)
+	cli, err := new(ctx, credentialsFile)
 	if err != nil {
 		return err
 	}
-	content, err := ReadJsonFile(file)
+	content, err := readJSONFile(file)
 	if err != nil {
 		return err
 	}
@@ -139,9 +139,9 @@ func Set(credentialsFile, collection, documentName, file string) error {
 	return err
 }
 
-func Read(credentialsFile, collection, documentName, fileName string) error {
+func read(credentialsFile, collection, documentName, fileName string) error {
 	ctx := context.Background()
-	cli, err := New(ctx, credentialsFile)
+	cli, err := new(ctx, credentialsFile)
 	if err != nil {
 		return err
 	}
@@ -158,7 +158,7 @@ func Read(credentialsFile, collection, documentName, fileName string) error {
 	return ioutil.WriteFile(fileName, res, 0644)
 }
 
-func ReadJsonFile(file string) (map[string]interface{}, error) {
+func readJSONFile(file string) (map[string]interface{}, error) {
 	body, err := ioutil.ReadFile(file)
 	if err != nil {
 		return nil, err
@@ -171,7 +171,7 @@ func ReadJsonFile(file string) (map[string]interface{}, error) {
 	return out, nil
 }
 
-func New(ctx context.Context, file string) (*firestore.Client, error) {
+func new(ctx context.Context, file string) (*firestore.Client, error) {
 	opt := option.WithCredentialsFile(file)
 	app, err := firebase.NewApp(context.Background(), nil, opt)
 	if err != nil {
@@ -184,7 +184,7 @@ func New(ctx context.Context, file string) (*firestore.Client, error) {
 	return client, nil
 }
 
-func Collection() cli.Flag {
+func collection() cli.Flag {
 	return &cli.StringFlag{
 		Name:     "collection",
 		Aliases:  []string{"c"},
@@ -194,7 +194,7 @@ func Collection() cli.Flag {
 	}
 }
 
-func CredentialsFile() cli.Flag {
+func credentialsFile() cli.Flag {
 	return &cli.StringFlag{
 		Name:     "authentication",
 		Aliases:  []string{"auth"},
@@ -204,7 +204,7 @@ func CredentialsFile() cli.Flag {
 	}
 }
 
-func Document() cli.Flag {
+func document() cli.Flag {
 	return &cli.StringFlag{
 		Name:     "document",
 		Aliases:  []string{"d"},
@@ -214,7 +214,7 @@ func Document() cli.Flag {
 	}
 }
 
-func JsonFile() cli.Flag {
+func jsonFile() cli.Flag {
 	return &cli.StringFlag{
 		Name:     "file",
 		Aliases:  []string{"f"},
