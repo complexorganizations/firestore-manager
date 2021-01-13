@@ -1,16 +1,15 @@
 package main
 
 import (
+	"cloud.google.com/go/firestore"
 	"context"
 	"encoding/json"
-	"io/ioutil"
-	"log"
-	"os"
-
-	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go"
 	"github.com/urfave/cli/v2"
 	"google.golang.org/api/option"
+	"io/ioutil"
+	"log"
+	"os"
 )
 
 func main() {
