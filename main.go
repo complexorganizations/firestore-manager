@@ -89,7 +89,6 @@ func main() {
 				)
 			},
 		})
-
 	err := app.Run(os.Args)
 	if err != nil {
 		log.Fatalln(err.Error())
@@ -102,15 +101,12 @@ func Create(credentialsFile, collection, documentName, fileName string) error {
 	if err != nil {
 		return err
 	}
-
 	content, err := ReadJsonFile(fileName)
 	if err != nil {
 		return err
 	}
-
 	col := cli.Collection(collection)
 	cal := col.Doc(documentName)
-
 	_, err = cal.Create(ctx, content)
 	return err
 }
@@ -121,10 +117,8 @@ func Delete(credentialsFile, collection, documentName string) error {
 	if err != nil {
 		return err
 	}
-
 	col := cli.Collection(collection)
 	cal := col.Doc(documentName)
-
 	_, err = cal.Delete(ctx)
 	return err
 }
@@ -135,15 +129,12 @@ func Set(credentialsFile, collection, documentName, file string) error {
 	if err != nil {
 		return err
 	}
-
 	content, err := ReadJsonFile(file)
 	if err != nil {
 		return err
 	}
-
 	col := cli.Collection(collection)
 	cal := col.Doc(documentName)
-
 	_, err = cal.Set(ctx, content)
 	return err
 }
@@ -154,10 +145,8 @@ func Read(credentialsFile, collection, documentName, fileName string) error {
 	if err != nil {
 		return err
 	}
-
 	col := cli.Collection(collection)
 	doc := col.Doc(documentName)
-
 	snap, err := doc.Get(context.Background())
 	if err != nil {
 		return err
@@ -174,13 +163,11 @@ func ReadJsonFile(file string) (map[string]interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	out := map[string]interface{}{}
 	err = json.Unmarshal(body, &out)
 	if err != nil {
 		return nil, err
 	}
-
 	return out, nil
 }
 
@@ -190,12 +177,10 @@ func New(ctx context.Context, file string) (*firestore.Client, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	client, err := app.Firestore(ctx)
 	if err != nil {
 		return nil, err
 	}
-
 	return client, nil
 }
 
