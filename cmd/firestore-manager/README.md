@@ -1,1 +1,0 @@
-cmd/firestore-manager

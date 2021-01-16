@@ -1,1 +1,0 @@
-internal/app/firestore-manager
