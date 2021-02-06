@@ -1,4 +1,4 @@
-# Firestore (Export|Import|Delete)
+# Firestore Manager
 
 #### Features
 - Being able to import local json documents to firestore
