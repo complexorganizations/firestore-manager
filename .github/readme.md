@@ -27,5 +27,5 @@ go get -v github.com/complexorganizations/firestore-manager
 
 Using `firestore-manager` binary
 ```
-./firestore-manager read -auth [PATH] --collection contacts --document [DOCUMENT_ID] --file [PATH]
+firestore-manager read -auth [PATH] --collection contacts --document [DOCUMENT_ID] --file [PATH]
 ```
