@@ -32,12 +32,12 @@ Lets generate GCP credentials from `https://cloud.google.com/iam/docs/creating-m
 
 #### Unix
 ```
-export GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
+export GOOGLE_APPLICATION_CREDENTIALS=[PATH]
 ```
 
 #### Windows
 ```
-$env:GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
+$env:GOOGLE_APPLICATION_CREDENTIALS=[PATH]
 ```
 
 Download the latest `firestore-manager` binary
