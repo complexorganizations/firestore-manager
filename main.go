@@ -7,10 +7,15 @@ import (
 	firebase "firebase.google.com/go"
 	"github.com/urfave/cli/v2"
 	"google.golang.org/api/option"
-	"io/ioutil"
 	"log"
 	"os"
 )
+
+func init() {
+	if len(os.Args) < 1 {
+		log.Fatal("Error: No argument supplied.")
+	}
+}
 
 func main() {
 	app := cli.NewApp()
@@ -155,11 +160,11 @@ func read(credentialsFile, collection, documentName, fileName string) error {
 	if err != nil {
 		return err
 	}
-	return ioutil.WriteFile(fileName, res, 0644)
+	return os.WriteFile(fileName, res, 0644)
 }
 
 func readJSONFile(file string) (map[string]interface{}, error) {
-	body, err := ioutil.ReadFile(file)
+	body, err := os.ReadFile(file)
 	if err != nil {
 		return nil, err
 	}
