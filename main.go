@@ -1,19 +1,22 @@
 package main
 
 import (
-	"cloud.google.com/go/firestore"
 	"context"
 	"encoding/json"
+	"flag"
+	"log"
+	"os"
+
+	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go"
 	"github.com/urfave/cli/v2"
 	"google.golang.org/api/option"
-	"log"
-	"os"
 )
 
 func init() {
 	if len(os.Args) < 1 {
-		log.Fatal("Error: No argument supplied.")
+		flag.Usage()
+		os.Exit(0)
 	}
 }
 
