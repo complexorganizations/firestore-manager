@@ -1,6 +1,6 @@
 {
     "name": "Firestore-Manager",
-    "platforms": ["Windows", "MacOS", "Linux"],
+    "platforms": ["Admin"],
     "content": "README.md",
     "pages" : {
         ".github/readme.md": "Main read me and docs.",
