@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"flag"
 	"log"
@@ -49,6 +50,14 @@ func main() {
 	}
 }
 
+func createClient() {
+	ctx := context.Background()
+	client, err := firestore.NewClient(ctx, "projectID")
+	if err != nil {
+		log.Println(err)
+	}
+}
+
 func backupFirestore() {
 	//
 }
@@ -60,7 +69,7 @@ func restoreFirestore() {
 func validateJson() bool {
 	data, err := os.ReadFile(path)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	return json.Valid(data)
 }
