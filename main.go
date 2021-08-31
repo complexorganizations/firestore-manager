@@ -42,6 +42,9 @@ func init() {
 }
 
 func main() {
+	// Create a client and make sure the client is connected.
+	createClient()
+	// Determine what to do.
 	if backup {
 		backupFirestore()
 	}
