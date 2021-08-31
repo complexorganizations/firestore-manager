@@ -1,18 +1,19 @@
 package main
 
 import (
-	"os"
-	"log"
-	"flag"
 	"encoding/json"
+	"flag"
+	"log"
+	"os"
 	"path/filepath"
+
 	"cloud.google.com/go/firestore"
 )
 
 var (
-	backup bool
+	backup  bool
 	restore bool
-	path string
+	path    string
 )
 
 func init() {
