@@ -29,21 +29,25 @@ func init() {
 	} else {
 		log.Fatal("No arguments provided.")
 	}
-	// checks
+	// You need to choose what to do either backup or restore.
 	if !backup && !restore {
 		log.Fatal("No action specified.")
 	}
+	// You cannot do a backup and a restore at the same time.
+	if backup && restore {
+		log.Fatal("Cannot backup and restore at the same time.")
+	}
+	// You need to specify a path to the backup file.
 	if path == "example.example" && filepath.Ext(path) != ".json" {
 		log.Fatal("No path specified.")
 	}
+	// You need to specify a valid json file.
 	if !validateJson() {
 		log.Fatal("Invalid JSON file.")
 	}
 }
 
 func main() {
-	// Create a client and make sure the client is connected.
-	createClient()
 	// Determine what to do.
 	if backup {
 		backupFirestore()
@@ -52,17 +56,12 @@ func main() {
 		restoreFirestore()
 	}
 }
-
-func createClient() {
+func backupFirestore() {
 	ctx := context.Background()
 	client, err := firestore.NewClient(ctx, "projectID")
 	if err != nil {
 		log.Println(err)
 	}
-}
-
-func backupFirestore() {
-	//
 }
 
 func restoreFirestore() {
@@ -75,4 +74,12 @@ func validateJson() bool {
 		log.Println(err)
 	}
 	return json.Valid(data)
+}
+
+func openAndRead() []byte {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return data
 }
