@@ -5,7 +5,7 @@ go 1.17
 require (
 	cloud.google.com/go/firestore v1.6.1
 	firebase.google.com/go v3.13.0+incompatible
-	github.com/urfave/cli/v2 v2.4.0
+	github.com/urfave/cli/v2 v2.4.4
 	google.golang.org/api v0.73.0
 )
 
