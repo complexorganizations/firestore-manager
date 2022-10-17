@@ -5,7 +5,7 @@ go 1.19
 require (
 	cloud.google.com/go/firestore v1.7.0
 	firebase.google.com/go v3.13.0+incompatible
-	github.com/urfave/cli/v2 v2.17.1
+	github.com/urfave/cli/v2 v2.20.2
 	google.golang.org/api v0.99.0
 )
 
