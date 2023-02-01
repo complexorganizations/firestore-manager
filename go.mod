@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go/firestore v1.9.0
 	firebase.google.com/go v3.13.0+incompatible
 	github.com/urfave/cli/v2 v2.24.2
-	google.golang.org/api v0.108.0
+	google.golang.org/api v0.109.0
 )
 
 require (
