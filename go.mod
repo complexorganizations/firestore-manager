@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go/firestore v1.10.0
 	firebase.google.com/go v3.13.0+incompatible
 	github.com/urfave/cli/v2 v2.25.6
-	google.golang.org/api v0.126.0
+	google.golang.org/api v0.127.0
 )
 
 require (
@@ -22,7 +22,7 @@ require (
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/s2a-go v0.1.4 // indirect
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/googleapis/enterprise-certificate-proxy v0.2.3 // indirect
+	github.com/googleapis/enterprise-certificate-proxy v0.2.4 // indirect
 	github.com/googleapis/gax-go/v2 v2.10.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
