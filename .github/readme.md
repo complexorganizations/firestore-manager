@@ -28,7 +28,7 @@ GLOBAL OPTIONS:
 ---
 ### Installation
 
-Lets generate GCP credentials from `https://cloud.google.com/iam/docs/creating-managing-service-accounts`, Once you have your service account, your ready.
+Lets generate GCP credentials from `https://cloud.google.com/iam/docs/service-accounts-create`, Once you have your service account, your ready.
 
 #### Unix
 ```
