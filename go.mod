@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go/firestore v1.11.0
 	firebase.google.com/go v3.13.0+incompatible
 	github.com/urfave/cli/v2 v2.25.7
-	google.golang.org/api v0.132.0
+	google.golang.org/api v0.133.0
 )
 
 require (
@@ -38,7 +38,7 @@ require (
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20230706204954-ccb25ca9f130 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20230706204954-ccb25ca9f130 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20230711160842-782d3b101e98 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20230720185612-659f7aaaa771 // indirect
 	google.golang.org/grpc v1.56.2 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 )
