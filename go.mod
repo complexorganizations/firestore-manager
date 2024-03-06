@@ -1,6 +1,6 @@
 module github.com/complexorganizations/firestore-manager
 
-go 1.19
+go 1.22
 
 require (
 	cloud.google.com/go/firestore v1.15.0
