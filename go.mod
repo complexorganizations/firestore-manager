@@ -5,7 +5,7 @@ go 1.22
 require (
 	cloud.google.com/go/firestore v1.16.0
 	firebase.google.com/go v3.13.0+incompatible
-	github.com/urfave/cli/v2 v2.27.3
+	github.com/urfave/cli/v2 v2.27.4
 	google.golang.org/api v0.191.0
 )
 
